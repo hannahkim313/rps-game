@@ -8,10 +8,10 @@ function computerPlay() {
 
     // Output "Rock," "Paper," or "Scissors" based on number
     if (randomNum === 1) {
-        console.log("Rock");
+        return "Rock";
     } else if (randomNum === 2) {
-        console.log("Paper");
+        return "Paper";
     } else {
-        console.log("Scissors");
+        return "Scissors";
     }
 }
