@@ -16,3 +16,15 @@ function computerPlay() {
         return "Scissors";
     }
 }
+
+/**
+ * Returns a string with the first letter capitalized and the rest
+ * of the letters in lowercase.
+ * @param {string} word - The word to capitalize
+ * @returns {string} word with only the first letter capitalized
+ */
+ function capitalize(word) {
+    word = word.toLowerCase();
+    const firstLetter = word.charAt(0).toUpperCase();
+    return word = `${firstLetter}${word.slice(1, word.length)}`;
+}
