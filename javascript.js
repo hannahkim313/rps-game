@@ -1,6 +1,7 @@
 /**
  * Randomly returns a string value of either "Rock," "Paper," or
  * "Scissors" to represent the computer's play.
+ * @returns {string} The computer's play for a single round
  */
 function computerPlay() {
     // Generate a random number between 1-3
