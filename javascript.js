@@ -1,7 +1,7 @@
 /**
  * Randomly returns a string value of either "Rock," "Paper," or
  * "Scissors" to represent the computer's play.
- * @returns {string} Computer's play for a single round
+ * @returns {string} Computer's play for a single round.
  */
 function computerPlay() {
     // Generate a random number between 1-3
@@ -20,8 +20,8 @@ function computerPlay() {
 /**
  * Returns a string with the first letter capitalized and the rest
  * of the letters in lowercase.
- * @param {string} word - Word to capitalize
- * @returns {string} word with only the first letter capitalized
+ * @param {string} word - Word to capitalize.
+ * @returns {string} word with only the first letter capitalized.
  */
  function capitalize(word) {
     word = word.toLowerCase();
@@ -32,9 +32,9 @@ function computerPlay() {
 /**
  * Returns a string that declares whether the player has won or
  * lost a single round.
- * @param {string} playerSelection - The player's play
- * @param {string} computerSelection - The computer's play
- * @returns {string} Win or lose statement
+ * @param {string} playerSelection - The player's play.
+ * @param {string} computerSelection - The computer's play.
+ * @returns {string} Win or lose statement.
  */
 function playRound(playerSelection, computerSelection) {
     playerSelection = capitalize(playerSelection);
@@ -42,10 +42,13 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === "Rock" && computerSelection === "Scissors" ||
         playerSelection === "Paper" && computerSelection === "Rock" ||
         playerSelection === "Scissors" && computerSelection === "Paper") {
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+            console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+            return "Win";
     } else if (playerSelection === computerSelection) {
-        return `It's a tie! You both picked ${playerSelection}`;
+        console.log(`It's a tie! You both picked ${playerSelection}`);
+        return "Tie";
     } else {
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "Lose";
     }
 }
