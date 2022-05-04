@@ -69,52 +69,32 @@ function playRound(playerSelection, computerSelection) {
     for (i = 0; i < 5; i++) {
         let playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
 
-        // If player presses "cancel," break
-        if (playerSelection === null) {
-            break;
-        }
-
-        while (playerSelection === "") {
-            alert("You didn't make a move!");
-            playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
-        }
-
-        let playerWinOrLose = playRound(playerSelection, computerPlay());
-
-        if (playerWinOrLose === "Win") {
-            playerScore++;
-        } else if (playerWinOrLose === "Lose") {
-            computerScore++;
-        } else if (playerWinOrLose === "Tie") {
-            tie++;
+        if (playerSelection !== null) {
+            while (playerSelection === "") {
+                alert("You didn't make a move!");
+                playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
+            }
+    
+            let playerWinOrLose = playRound(playerSelection, computerPlay());
+    
+            if (playerWinOrLose === "Win") {
+                playerScore++;
+            } else if (playerWinOrLose === "Lose") {
+                computerScore++;
+            } else if (playerWinOrLose === "Tie") {
+                tie++;
+            } else {
+                break;
+            }
         } else {
             break;
         }
     }
 
-    console.log("And the final winner is...");
-    if (playerScore > computerScore) {
-        if (tie === 1) {
-            console.log(`You! Congratulations, you won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
-        } else {
-            console.log(`You! Congratulations, you won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
-        }
-    } else if (playerScore < computerScore) {
-        if (tie === 1) {
-            console.log(`Me! Sorry, but you totally lost. You won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
-        } else {
-            console.log(`Me! Sorry, but you totally lost. You won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
-        }
+    if (playerScore === 0 && computerScore === 0 && tie === 0) {
+        console.log("Sorry, looks like nothing happened this game!");
     } else {
-        if (tie === 1) {
-            console.log(`Me! Just kidding, looks like a tie.
-                You won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
-        } else if (playerScore === 0 && computerScore === 0 && tie === 0) {
-            console.log("Sorry, looks like nothing happened this game!");
-        } else {
-            console.log(`Me! Just kidding, looks like a tie.
-                You won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
-        }
+        console.log(`End of game! Your final scores are: ${playerScore} wins, ${computerScore} losses, and ${tie} ties`);
     }
 }
 
