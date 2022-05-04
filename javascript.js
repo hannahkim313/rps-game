@@ -52,3 +52,48 @@ function playRound(playerSelection, computerSelection) {
         return "Lose";
     }
 }
+
+/**
+ * Initiates game with the player.
+ */
+ function game() {
+    console.log("Welcome to a game of Rock Paper Scissors!");
+    console.log("We are going to play a total of 5 rounds.");
+    console.log("The one with the highest score at the end of the 5 rounds wins.");
+    console.log("Are you ready?");
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let tie = 0;
+
+    for (i = 0; i < 5; i++) {
+        let playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
+        let playerWinOrLose = playRound(playerSelection, computerPlay());
+
+        if (playerWinOrLose === "Win") {
+            playerScore++;
+        } else if (playerWinOrLose === "Lose") {
+            computerScore++;
+        } else {
+            tie++;
+        }
+    }
+
+    console.log("And the final winner is...");
+    if (playerScore > computerScore) {
+        console.log(`You! Congratulations, you won ${playerScore} out of 5 rounds.`);
+    } else if (playerScore < computerScore) {
+        console.log(`Me! Sorry, but you totally lost. You won ${playerScore} out of 5 rounds.`);
+    } else {
+        if (tie === 1) {
+            console.log(`Me! Just kidding, looks like a tie.
+                You won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
+        } else {
+            console.log(`Me! Just kidding, looks like a tie.
+                You won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
+        }
+    }
+}
+
+// Call game() to play in browser console
+game();
