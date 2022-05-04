@@ -94,10 +94,7 @@ function playRound(playerSelection, computerSelection) {
     if (playerScore === 0 && computerScore === 0 && tie === 0) {
         console.log("Sorry, looks like nothing happened this game!");
     } else {
-        console.log(
-            `End of game! Your final scores are:
-            ${playerScore} wins, ${computerScore} losses, and ${tie} ties`
-        );
+        console.log(`End of game! Your final scores are: ${playerScore} wins, ${computerScore} losses, and ${tie} ties`);
     }
 }
 
