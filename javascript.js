@@ -94,9 +94,17 @@ function playRound(playerSelection, computerSelection) {
 
     console.log("And the final winner is...");
     if (playerScore > computerScore) {
-        console.log(`You! Congratulations, you won ${playerScore} out of 5 rounds.`);
+        if (tie === 1) {
+            console.log(`You! Congratulations, you won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
+        } else {
+            console.log(`You! Congratulations, you won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
+        }
     } else if (playerScore < computerScore) {
-        console.log(`Me! Sorry, but you totally lost. You won ${playerScore} out of 5 rounds.`);
+        if (tie === 1) {
+            console.log(`Me! Sorry, but you totally lost. You won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
+        } else {
+            console.log(`Me! Sorry, but you totally lost. You won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
+        }
     } else {
         if (tie === 1) {
             console.log(`Me! Just kidding, looks like a tie.
