@@ -68,14 +68,27 @@ function playRound(playerSelection, computerSelection) {
 
     for (i = 0; i < 5; i++) {
         let playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
+
+        // If player presses "cancel," break
+        if (playerSelection === null) {
+            break;
+        }
+
+        while (playerSelection === "") {
+            alert("You didn't make a move!");
+            playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
+        }
+
         let playerWinOrLose = playRound(playerSelection, computerPlay());
 
         if (playerWinOrLose === "Win") {
             playerScore++;
         } else if (playerWinOrLose === "Lose") {
             computerScore++;
-        } else {
+        } else if (playerWinOrLose === "Tie") {
             tie++;
+        } else {
+            break;
         }
     }
 
@@ -88,6 +101,8 @@ function playRound(playerSelection, computerSelection) {
         if (tie === 1) {
             console.log(`Me! Just kidding, looks like a tie.
                 You won ${playerScore} out of 5 rounds and ${tie} of them was a tie.`);
+        } else if (playerScore === 0 && computerScore === 0 && tie === 0) {
+            console.log("Sorry, looks like nothing happened this game!");
         } else {
             console.log(`Me! Just kidding, looks like a tie.
                 You won ${playerScore} out of 5 rounds and ${tie} of them were ties.`);
