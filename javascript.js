@@ -100,3 +100,27 @@
 
 // // Call game() to play in browser console
 // game();
+
+// Function declarations start here //
+
+/**
+ * Fades an element from 100% opacity to 0% opacity within the specified
+ * transition duration and hides the entire element afterwards.
+ * @param {Object} element - Element object of CSS selector
+ */
+
+function fadeElement(element) {
+    element.style.opacity = "0";
+    element.addEventListener("transitionend", () => {
+        element.style.display = "none";
+    });
+}
+
+// Element object declarations and event listeners start here //
+
+const startButton = document.querySelector(".start-button");
+
+startButton.addEventListener("click", function(e) {
+    const homeContainer = document.querySelector("#home-container");
+    fadeElement(homeContainer);
+});

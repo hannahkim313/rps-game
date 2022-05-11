@@ -28,6 +28,7 @@ body {
     color: #593D3B;
     margin: 300px;
     gap: 25px;
+    transition-duration: 1s;
     display: flex;
     flex-direction: column;
     justify-content: center;
