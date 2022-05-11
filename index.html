@@ -6,19 +6,67 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock Paper Scissors</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neucha|Inter">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="javascript.js" defer></script>
     </head>
         <body>
             <div id="page">
-                <div id="home-container">
+                <!-- Keep hidden while working on main game elements -->
+                <!-- <div id="home-container">
                     <h1 class="title">Rock Paper Scissors</h1>
                     <h3 class="author">Created by Hannah Kim</h3>
                     <button class="start-button">Start game</button>
-                </div>
-                
+                </div> -->
+
                 <div id="game-container">
-                    <!-- Elements for the main game go here -->
+                    <div class="round-message">
+                        <div class="main-text">Make a move!</div>
+                        <div class="sub-text">The first to reach 5 points wins.</div>
+                    </div>
+
+                    <div class="round-results">
+                        <div class="player">
+                            <div class="player-icon">
+                                <!-- Add icon image -->
+                            </div>
+    
+                            <div class="player-move">
+                                <!-- Add default placeholder -->
+                            </div>
+                        </div>
+
+                        <div class="score">0 - 0 - 0</div>
+
+                        <div class="computer">
+                            <div class="computer-icon">
+                                <!-- Add icon image -->
+                            </div>
+
+                            <div class="computer-move">
+                                <!-- Add default placeholder -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="move-icons">
+                        <button class="rock">
+                            <!-- Add rock image -->
+                        </button>
+
+                        <button class="paper">
+                            <!-- Add paper image -->
+                        </button>
+
+                        <button class="scissors">
+                            <!-- Add scissors image -->
+                        </button>
+                    </div>
+                </div>
+
+                <div id="footer">
+                    <i class='fa fa-github'></i>
+                    Hannah Kim
                 </div>
             </div>
         </body>
