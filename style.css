@@ -15,13 +15,13 @@ body {
 
 /* Selectors for the opening page begin here */
 
-#opening-page {
+#page {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container {
+#home-container {
     min-width: 500px;
     height: auto;
     font-size: 30px;
