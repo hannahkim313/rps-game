@@ -106,21 +106,37 @@
 /**
  * Fades an element from 100% opacity to 0% opacity within the specified
  * transition duration and hides the entire element afterwards.
- * @param {Object} element - Element object of CSS selector
+ * @param {Object} el - Element object of CSS selector
  */
 
-function fadeElement(element) {
-    element.style.opacity = "0";
-    element.addEventListener("transitionend", () => {
-        element.style.display = "none";
+function fadeElement(el) {
+    el.style.opacity = "0";
+    el.addEventListener("transitionend", () => {
+        el.style.display = "none";
     });
+}
+
+/**
+ * Displays a hidden element after a transition event has ended.
+ * @param {Object} el - Element object of CSS selector
+ */
+function displayElement(el) {
+    window.addEventListener("transitionend", () => {
+        el.style.display = "initial";
+    })
 }
 
 // Element object declarations and event listeners start here //
 
+const homeContainer = document.querySelector("#home-container");
 const startButton = document.querySelector(".start-button");
+const gameContent = document.querySelector("#game-container");
+
+window.addEventListener("pageshow", function(e) {
+    gameContent.style.display = "none";
+});
 
 startButton.addEventListener("click", function(e) {
-    const homeContainer = document.querySelector("#home-container");
     fadeElement(homeContainer);
+    displayElement(gameContent);
 });
