@@ -11,6 +11,10 @@ body {
     min-height: 100vh;
     background-color: #FFBEA7;
     /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 img {
@@ -19,13 +23,6 @@ img {
     padding: 15px;
     border: 3px solid #E7E6E7;
     border-radius: 50%;
-}
-
-#page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Selectors for the home page begin here */
@@ -67,7 +64,7 @@ img {
     height: auto;
     font-size: 30px;
     text-align: center;
-    margin: 150px;
+    margin: 75px 75px auto;
     gap: 50px;
     display: flex;
     flex-direction: column;
@@ -124,6 +121,11 @@ img {
 .scissors {
     background-color: #FFBEA7;
     border: none;
+}
+
+#footer {
+    margin-top: auto;
+    padding: 25px;
 }
 
 /*
