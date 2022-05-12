@@ -21,5 +21,3 @@ All of the images used in this project are credited below:
 * The [rock paper scissors](https://www.vecteezy.com/vector-art/693097-rock-paper-scissors-flat-icons)
 logos by [nightwolfdezines](https://www.vecteezy.com/members/nightwolfdezines)
 from [Vecteezy](https://www.vecteezy.com/)
-* The [pink video game controller](https://www.vecteezy.com/vector-art/3760590-classic-video-game-control) of the player by [jemastock](https://www.vecteezy.com/members/jemastock) from [Vecteezy](https://www.vecteezy.com/)
-* The [pink video game controller](https://www.vecteezy.com/vector-art/3759813-pink-video-game-control) of the computer by [jemastock](https://www.vecteezy.com/members/jemastock) from [Vecteezy](https://www.vecteezy.com/)
