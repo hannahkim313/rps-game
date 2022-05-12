@@ -28,6 +28,10 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* Selectors for the home page begin here */
 
 #home-container {
