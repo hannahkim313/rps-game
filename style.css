@@ -23,6 +23,11 @@ img {
     border-radius: 50%;
 }
 
+a {
+    color: #593D3B;
+    text-decoration: none;
+}
+
 /* Selectors for the home page begin here */
 
 #home-container {
@@ -30,7 +35,7 @@ img {
     height: auto;
     font-size: 30px;
     color: #593D3B;
-    margin: 300px;
+    margin: 300px 300px auto;
     gap: 25px;
     transition-duration: 1s;
     display: flex;
@@ -62,7 +67,7 @@ img {
     font-size: 30px;
     text-align: center;
     color: #593D3B;
-    margin: 75px;
+    margin: 75px 75px 35px;
     gap: 50px;
     display: flex;
     flex-direction: column;
@@ -125,6 +130,7 @@ img {
 }
 
 #footer {
+    font-size: 18px;
     margin: auto;
 }
 
