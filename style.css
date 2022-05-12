@@ -7,7 +7,6 @@
 }
 
 body {
-    min-width: 100vw;
     min-height: 100vh;
     background-color: #FFBEA7;
     /* overflow: hidden; */
@@ -21,7 +20,6 @@ img {
     max-width: 150px;
     height: auto;
     padding: 15px;
-    border: 3px solid #E7E6E7;
     border-radius: 50%;
 }
 
@@ -60,16 +58,15 @@ img {
 /* Selectors for the game page begin here */
 
 #game-container {
-    min-width: 800px;
-    height: auto;
+    min-width: 300px;
     font-size: 30px;
     text-align: center;
-    margin: 75px 75px auto;
+    color: #593D3B;
+    margin: 75px;
     gap: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .round-message {
@@ -79,53 +76,56 @@ img {
 }
 
 .round-results {
-    margin: 15px 0;
-    gap: 50px;
+    margin-top: 15px;
+    gap: 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.player {
-    gap: 15px;
-    display: flex;
-    flex-direction: column;
+.score {
+    margin-top: 60px;
 }
 
-.player-move {
-    padding: 75px;
-    background-color: #c39280;
-}
-
+.player,
 .computer {
     gap: 15px;
     display: flex;
     flex-direction: column;
 }
 
+.player-name,
+.computer-name {
+    padding-bottom: 10px;
+    border-bottom: 3px solid #593D3B;
+}
+
+.player-move,
 .computer-move {
+    max-width: 175px;
+    max-height: 175px;
+    font-size: 20px;
     padding: 75px;
-    background-color: #c39280;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .move-icons {
-    max-width: 100%;
-    height: auto;
     gap: 50px;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .rock,
 .paper,
 .scissors {
     background-color: #FFBEA7;
-    border: none;
+    border: 3px solid #E7E6E7;
+    border-radius: 50%;
 }
 
 #footer {
-    margin-top: auto;
-    padding: 25px;
+    margin: auto;
 }
 
 /*
