@@ -128,6 +128,20 @@ function displayElement(el, val) {
 }
 
 /**
+ * Hides an element.
+ * @param {object} el - Element object of CSS selector(s).
+ */
+function hideElement(el) {
+    if (el.length !== undefined) {
+        for (let i = 0; i < el.length; i++) {
+            el[i].style.display = "none";
+        }
+    } else {
+        el.style.display = "none";
+    }
+}
+
+/**
  * Adds an image of either rock, paper, or scissors under the player
  * section based on which button was clicked.
  * @param {object} btn - Element object of CSS selector.
@@ -211,6 +225,7 @@ const gameContainer = document.querySelector("#game-container");
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
+const imgPlaceholder = document.querySelectorAll(".img-placeholder");
 
 window.addEventListener("pageshow", function(e) {
     gameContainer.style.display = "none";
@@ -234,6 +249,5 @@ rockBtn.addEventListener("click", function(e) {
     const playerMove = addPlayerMove(rockBtn);
     const computerMove = addComputerMove();
     playRound(playerMove, computerMove);
-    // After images have been placed, hide .img-placeholder
-    // EX: hideElement(imgPlaceholder);
+    hideElement(imgPlaceholder);
 });
