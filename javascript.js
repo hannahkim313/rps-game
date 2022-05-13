@@ -106,7 +106,7 @@
 /**
  * Fades an element from 100% opacity to 0% opacity within the specified
  * transition duration and hides the entire element afterwards.
- * @param {Object} el - Element object of CSS selector.
+ * @param {object} el - Element object of CSS selector.
  */
 
 function fadeElement(el) {
@@ -118,8 +118,8 @@ function fadeElement(el) {
 
 /**
  * Displays a hidden element after a transition event has ended.
- * @param {Object} el - Element object of CSS selector.
- * @param {String} val - Value of display property.
+ * @param {object} el - Element object of CSS selector.
+ * @param {string} val - Value of display property.
  */
 function displayElement(el, val) {
     window.addEventListener("transitionend", () => {
@@ -128,10 +128,10 @@ function displayElement(el, val) {
 }
 
 /**
- * Adds an image of either rock, paper, or scissors under the player or
- * computer section based on which move was made.
- * @param {Object} btn - Element object of CSS selector.
- * @returns {String} move that the player made.
+ * Adds an image of either rock, paper, or scissors under the player
+ * section based on which button was clicked.
+ * @param {object} btn - Element object of CSS selector.
+ * @returns {string} move that the player made.
  */
 function addPlayerMove(btn) {
     if (btn === rockBtn) {
@@ -157,22 +157,68 @@ function addPlayerMove(btn) {
     }
 }
 
+/**
+ * Adds an image of either rock, paper, or scissors under the computer
+ * section based on which move was randomly made.
+ * @param {object} btn - Element object of CSS selector.
+ * @returns {string} move that the player made.
+ */
+function addComputerMove() {
+    const randomNum = Math.floor(Math.random() * (3)) + 1;
+    const computerMove = (randomNum === 1) ? "rock"
+        : (randomNum === 2) ? "paper"
+        : "scissors";
+    if (computerMove === "rock") {
+        const rock = document.createElement("img");
+        rock.src = "/images/rock.jpg";
+        document.querySelector(".computer-move").appendChild(rock);
+        return "rock";
+    }
+    if (computerMove === "paper") {
+        const paper = document.createElement("img");
+        paper.src = "/images/paper.jpg";
+        document.querySelector(".computer-move").appendChild(paper);
+        return "paper";
+    }
+    if (computerMove === "scissors") {
+        const scissors = document.createElement("img");
+        scissors.src = "/images/scissors.jpg";
+        document.querySelector(".computer-move").appendChild(scissors);
+        return "scissors";
+    }
+}
+
+/**
+ * Returns a string that declares the result of the round.
+ * @param {string} playerMove - The player's move.
+ * @param {string} computerMove - The computer's move.
+ * @returns {string} Win, lose, or tie statement.
+ */
+ function playRound(playerMove, computerMove) {
+    return (playerMove === "rock" && computerMove === "scissors" ||
+        playerMove === "paper" && computerMove === "rock" ||
+        playerMove === "scissors" && computerMove === "paper") ? "win"
+        : (playerMove === computerMove) ? "tie"
+        : "lose";
+}
+
 // Element object declarations and event listeners start here //
 
 const homeContainer = document.querySelector("#home-container");
 const startButton = document.querySelector(".start-button");
-const gameContent = document.querySelector("#game-container");
+
+const gameContainer = document.querySelector("#game-container");
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 
 window.addEventListener("pageshow", function(e) {
-    gameContent.style.display = "none";
+    gameContainer.style.display = "none";
 });
 
 startButton.addEventListener("click", function(e) {
     fadeElement(homeContainer);
-    displayElement(gameContent, "flex");
+    displayElement(gameContainer, "flex");
 });
 
 // When player clicks on rock, paper, or scissors button, add image to player move.
@@ -185,6 +231,9 @@ startButton.addEventListener("click", function(e) {
 // continue to display pop-up message if player clicks rps icons.
 
 rockBtn.addEventListener("click", function(e) {
-    // Call playRound() function with correct playerSelection every time button is clicked
-    // EX: playRound(addPlayerMove(rockBtn), computerSelection);
+    const playerMove = addPlayerMove(rockBtn);
+    const computerMove = addComputerMove();
+    playRound(playerMove, computerMove);
+    // After images have been placed, hide .img-placeholder
+    // EX: hideElement(imgPlaceholder);
 });
