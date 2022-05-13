@@ -46,7 +46,11 @@
 // // Call game() to play in browser console
 // game();
 
-// Function declarations start here //
+/**
+ * 
+ * Function declarations start here
+ * 
+ * //
 
 /**
  * Fades an element from 100% opacity to 0% opacity within the specified
@@ -192,7 +196,11 @@ function addComputerMove() {
         : "lose";
 }
 
-// Element object declarations and event listeners start here //
+/**
+ * 
+ * Element object declarations and event listeners start here
+ * 
+ **/
 
 const homeContainer = document.querySelector("#home-container");
 const startButton = document.querySelector(".start-button");
@@ -252,3 +260,6 @@ scissorsBtn.addEventListener("click", function(e) {
     playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
 });
+
+// PROBLEM:
+// Player can't select the same move multiple times in a row
