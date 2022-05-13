@@ -1,59 +1,4 @@
 // /**
-//  * Randomly returns a string value of either "Rock," "Paper," or
-//  * "Scissors" to represent the computer's play.
-//  * @returns {string} Computer's play for a single round.
-//  */
-// function computerPlay() {
-//     // Generate a random number between 1-3
-//     const randomNum = Math.floor(Math.random() * (3)) + 1;
-
-//     // Output "Rock," "Paper," or "Scissors" based on number
-//     if (randomNum === 1) {
-//         return "Rock";
-//     } else if (randomNum === 2) {
-//         return "Paper";
-//     } else {
-//         return "Scissors";
-//     }
-// }
-
-// /**
-//  * Returns a string with the first letter capitalized and the rest
-//  * of the letters in lowercase.
-//  * @param {string} word - Word to capitalize.
-//  * @returns {string} word with only the first letter capitalized.
-//  */
-//  function capitalize(word) {
-//     word = word.toLowerCase();
-//     const firstLetter = word.charAt(0).toUpperCase();
-//     return word = `${firstLetter}${word.slice(1, word.length)}`;
-// }
-
-// /**
-//  * Returns a string that declares whether the player has won or
-//  * lost a single round.
-//  * @param {string} playerSelection - The player's play.
-//  * @param {string} computerSelection - The computer's play.
-//  * @returns {string} Win or lose statement.
-//  */
-// function playRound(playerSelection, computerSelection) {
-//     playerSelection = capitalize(playerSelection);
-
-//     if (playerSelection === "Rock" && computerSelection === "Scissors" ||
-//         playerSelection === "Paper" && computerSelection === "Rock" ||
-//         playerSelection === "Scissors" && computerSelection === "Paper") {
-//             console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-//             return "Win";
-//     } else if (playerSelection === computerSelection) {
-//         console.log(`It's a tie! You both picked ${playerSelection}`);
-//         return "Tie";
-//     } else {
-//         console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
-//         return "Lose";
-//     }
-// }
-
-// /**
 //  * Initiates game with the player.
 //  */
 //  function game() {
@@ -142,6 +87,28 @@ function hideElement(el) {
 }
 
 /**
+ * Determines whether or not an image of the player's move is present.
+ * @param {object} el - Element object of CSS selector.
+ * @returns {boolean}
+ */
+ function hasPlayerImage(el) {
+    return (el.lastElementChild.matches(".player-rock") ||
+        el.lastElementChild.matches(".player-paper") ||
+        el.lastElementChild.matches(".player-scissors")) ? true : false;
+}
+
+/**
+ * Determines whether or not an image of the computer's move is present.
+ * @param {object} el - Element object of CSS selector.
+ * @returns {boolean}
+ */
+ function hasComputerImage(el) {
+    return (el.lastElementChild.matches(".computer-rock") ||
+        el.lastElementChild.matches(".computer-paper") ||
+        el.lastElementChild.matches(".computer-scissors")) ? true : false;
+}
+
+/**
  * Adds an image of either rock, paper, or scissors under the player
  * section based on which button was clicked.
  * @param {object} btn - Element object of CSS selector.
@@ -150,6 +117,7 @@ function hideElement(el) {
 function addPlayerMove(btn) {
     if (btn === rockBtn) {
         const rock = document.createElement("img");
+        rock.classList.add("player-rock");
         rock.src = "/images/rock.jpg";
         document.querySelector(".player-move").appendChild(rock);
         rockBtn.disabled = true;
@@ -157,6 +125,7 @@ function addPlayerMove(btn) {
     }
     if (btn === paperBtn) {
         const paper = document.createElement("img");
+        paper.classList.add("player-paper");
         paper.src = "/images/paper.jpg";
         document.querySelector(".player-move").appendChild(paper);
         paperBtn.disabled = true;
@@ -164,6 +133,7 @@ function addPlayerMove(btn) {
     }
     if (btn === scissorsBtn) {
         const scissors = document.createElement("img");
+        scissors.classList.add("player-scissors");
         scissors.src = "/images/scissors.jpg";
         document.querySelector(".player-move").appendChild(scissors);
         scissorsBtn.disabled = true;
@@ -182,20 +152,26 @@ function addComputerMove() {
     const computerMove = (randomNum === 1) ? "rock"
         : (randomNum === 2) ? "paper"
         : "scissors";
+    if (hasComputerImage(computerMoveContainer) === true) {
+        hideElement(computerMoveContainer.lastElementChild);
+    }
     if (computerMove === "rock") {
         const rock = document.createElement("img");
+        rock.classList.add("computer-rock");
         rock.src = "/images/rock.jpg";
         document.querySelector(".computer-move").appendChild(rock);
         return "rock";
     }
     if (computerMove === "paper") {
         const paper = document.createElement("img");
+        paper.classList.add("computer-paper");
         paper.src = "/images/paper.jpg";
         document.querySelector(".computer-move").appendChild(paper);
         return "paper";
     }
     if (computerMove === "scissors") {
         const scissors = document.createElement("img");
+        scissors.classList.add("computer-scissors");
         scissors.src = "/images/scissors.jpg";
         document.querySelector(".computer-move").appendChild(scissors);
         return "scissors";
@@ -225,6 +201,8 @@ const gameContainer = document.querySelector("#game-container");
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
+const playerMoveContainer = document.querySelector(".player-move");
+const computerMoveContainer = document.querySelector(".computer-move");
 const imgPlaceholder = document.querySelectorAll(".img-placeholder");
 
 window.addEventListener("pageshow", function(e) {
@@ -246,7 +224,30 @@ startButton.addEventListener("click", function(e) {
 // continue to display pop-up message if player clicks rps icons.
 
 rockBtn.addEventListener("click", function(e) {
+    if (hasPlayerImage(playerMoveContainer) === true) {
+        hideElement(playerMoveContainer.lastElementChild);
+    }
     const playerMove = addPlayerMove(rockBtn);
+    const computerMove = addComputerMove();
+    playRound(playerMove, computerMove);
+    hideElement(imgPlaceholder);
+});
+
+paperBtn.addEventListener("click", function(e) {
+    if (hasPlayerImage(playerMoveContainer) === true) {
+        hideElement(playerMoveContainer.lastElementChild);
+    }
+    const playerMove = addPlayerMove(paperBtn);
+    const computerMove = addComputerMove();
+    playRound(playerMove, computerMove);
+    hideElement(imgPlaceholder);
+});
+
+scissorsBtn.addEventListener("click", function(e) {
+    if (hasPlayerImage(playerMoveContainer) === true) {
+        hideElement(playerMoveContainer.lastElementChild);
+    }
+    const playerMove = addPlayerMove(scissorsBtn);
     const computerMove = addComputerMove();
     playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
