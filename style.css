@@ -133,6 +133,12 @@ button {
     border-radius: 50%;
 }
 
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+    background-color: #e7e6e747;
+}
+
 #footer {
     font-size: 18px;
     margin: auto;
