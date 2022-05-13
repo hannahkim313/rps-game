@@ -127,11 +127,44 @@ function displayElement(el, val) {
     })
 }
 
+/**
+ * Adds an image of either rock, paper, or scissors under the player or
+ * computer section based on which move was made.
+ * @param {Object} btn - Element object of CSS selector.
+ * @returns {String} move that the player made.
+ */
+function addPlayerMove(btn) {
+    if (btn === rockBtn) {
+        const rock = document.createElement("img");
+        rock.src = "/images/rock.jpg";
+        document.querySelector(".player-move").appendChild(rock);
+        rockBtn.disabled = true;
+        return "rock";
+    }
+    if (btn === paperBtn) {
+        const paper = document.createElement("img");
+        paper.src = "/images/paper.jpg";
+        document.querySelector(".player-move").appendChild(paper);
+        paperBtn.disabled = true;
+        return "paper";
+    }
+    if (btn === scissorsBtn) {
+        const scissors = document.createElement("img");
+        scissors.src = "/images/scissors.jpg";
+        document.querySelector(".player-move").appendChild(scissors);
+        scissorsBtn.disabled = true;
+        return "scissors";
+    }
+}
+
 // Element object declarations and event listeners start here //
 
 const homeContainer = document.querySelector("#home-container");
 const startButton = document.querySelector(".start-button");
 const gameContent = document.querySelector("#game-container");
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
 
 window.addEventListener("pageshow", function(e) {
     gameContent.style.display = "none";
@@ -150,3 +183,8 @@ startButton.addEventListener("click", function(e) {
 // If the "play again" button is clicked, reload page.
 // If the player clicks outside of the final pop-up message, close the message and
 // continue to display pop-up message if player clicks rps icons.
+
+rockBtn.addEventListener("click", function(e) {
+    // Call playRound() function with correct playerSelection every time button is clicked
+    // EX: playRound(addPlayerMove(rockBtn), computerSelection);
+});
