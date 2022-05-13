@@ -141,3 +141,12 @@ startButton.addEventListener("click", function(e) {
     fadeElement(homeContainer);
     displayElement(gameContent, "flex");
 });
+
+// When player clicks on rock, paper, or scissors button, add image to player move.
+// After player selects move, add computer's image to computer move.
+// When both moves have been made, display either a winning or losing message and update score.
+// When either the player or computer reaches 5 points, display a pop-up message
+// with a winning or losing statement, the final score, and a "play again" button.
+// If the "play again" button is clicked, reload page.
+// If the player clicks outside of the final pop-up message, close the message and
+// continue to display pop-up message if player clicks rps icons.
