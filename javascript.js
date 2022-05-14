@@ -124,7 +124,6 @@ function addPlayerMove(btn) {
         rock.classList.add("player-rock");
         rock.src = "/images/rock.jpg";
         document.querySelector(".player-move").appendChild(rock);
-        rockBtn.disabled = true;
         return "rock";
     }
     if (btn === paperBtn) {
@@ -132,7 +131,6 @@ function addPlayerMove(btn) {
         paper.classList.add("player-paper");
         paper.src = "/images/paper.jpg";
         document.querySelector(".player-move").appendChild(paper);
-        paperBtn.disabled = true;
         return "paper";
     }
     if (btn === scissorsBtn) {
@@ -140,7 +138,6 @@ function addPlayerMove(btn) {
         scissors.classList.add("player-scissors");
         scissors.src = "/images/scissors.jpg";
         document.querySelector(".player-move").appendChild(scissors);
-        scissorsBtn.disabled = true;
         return "scissors";
     }
 }
@@ -260,6 +257,3 @@ scissorsBtn.addEventListener("click", function(e) {
     playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
 });
-
-// PROBLEM:
-// Player can't select the same move multiple times in a row
