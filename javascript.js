@@ -147,10 +147,9 @@ function addComputerMove() {
 
 /**
  * Increases the scoreboard based on the results from a single round.
- * @param {object} el - Element object of CSS selector.
  * @param {string} roundResult  - The result of a single round.
  */
-function increaseScore(el, roundResult) {
+function increaseScore(roundResult) {
     let score = 0;
     if(roundResult === "win") {
         score += parseInt(win.textContent);
@@ -185,7 +184,6 @@ const scissorsBtn = document.querySelector(".scissors");
 const playerMoveContainer = document.querySelector(".player-move");
 const computerMoveContainer = document.querySelector(".computer-move");
 const imgPlaceholder = document.querySelectorAll(".img-placeholder");
-const score = document.querySelector(".score");
 const win = document.querySelector(".win");
 const tie = document.querySelector(".tie");
 const lose = document.querySelector(".lose");
@@ -216,7 +214,7 @@ rockBtn.addEventListener("click", function(e) {
     const computerMove = addComputerMove();
     const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
-    increaseScore(score, roundResult);
+    increaseScore(roundResult);
 });
 
 paperBtn.addEventListener("click", function(e) {
@@ -227,7 +225,7 @@ paperBtn.addEventListener("click", function(e) {
     const computerMove = addComputerMove();
     const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
-    increaseScore(score, roundResult);
+    increaseScore(roundResult);
 });
 
 scissorsBtn.addEventListener("click", function(e) {
@@ -238,7 +236,7 @@ scissorsBtn.addEventListener("click", function(e) {
     const computerMove = addComputerMove();
     const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
-    increaseScore(score, roundResult);
+    increaseScore(roundResult);
 });
 
 // score.addEventListener("transitionend", function(e) {
