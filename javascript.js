@@ -1,15 +1,41 @@
 /**
  * 
+ * Element object declarations start here
+ * 
+ */
+
+ const homeContainer = document.querySelector("#home-container");
+ const startButton = document.querySelector(".start-button");
+ 
+ const gameContainer = document.querySelector("#game-container");
+
+ const rockBtn = document.querySelector(".rock");
+ const paperBtn = document.querySelector(".paper");
+ const scissorsBtn = document.querySelector(".scissors");
+
+ const playerMoveContainer = document.querySelector(".player-move");
+ const computerMoveContainer = document.querySelector(".computer-move");
+
+ const imgPlaceholder = document.querySelectorAll(".img-placeholder");
+
+ const win = document.querySelector(".win");
+ const tie = document.querySelector(".tie");
+ const lose = document.querySelector(".lose");
+ 
+ const mainRoundMessage = document.querySelector(".main-text");
+ const subRoundMessage = document.querySelector(".sub-text");
+
+/**
+ * 
  * Function declarations start here
  * 
- * //
+ */
 
 /**
  * Fades an element from 100% opacity to 0% opacity within the specified
  * transition duration and hides the entire element afterwards.
  * @param {object} el - Element object of CSS selector.
  */
-
 function fadeElement(el) {
     el.style.opacity = "0";
     el.addEventListener("transitionend", () => {
@@ -205,25 +231,9 @@ function printRoundMessage(roundResult, playerMove, computerMove) {
 
 /**
  * 
- * Element object declarations and event listeners start here
+ * Event listeners start here
  * 
- **/
-
-const homeContainer = document.querySelector("#home-container");
-const startButton = document.querySelector(".start-button");
-
-const gameContainer = document.querySelector("#game-container");
-const rockBtn = document.querySelector(".rock");
-const paperBtn = document.querySelector(".paper");
-const scissorsBtn = document.querySelector(".scissors");
-const playerMoveContainer = document.querySelector(".player-move");
-const computerMoveContainer = document.querySelector(".computer-move");
-const imgPlaceholder = document.querySelectorAll(".img-placeholder");
-const win = document.querySelector(".win");
-const tie = document.querySelector(".tie");
-const lose = document.querySelector(".lose");
-const mainRoundMessage = document.querySelector(".main-text");
-const subRoundMessage = document.querySelector(".sub-text");
+ */
 
 window.addEventListener("pageshow", function(e) {
     gameContainer.style.display = "none";
