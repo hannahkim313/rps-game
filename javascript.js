@@ -1,51 +1,3 @@
-// /**
-//  * Initiates game with the player.
-//  */
-//  function game() {
-//     console.log("Welcome to a game of Rock Paper Scissors!");
-//     console.log("We are going to play a total of 5 rounds.");
-//     console.log("The one with the highest score at the end of the 5 rounds wins.");
-//     console.log("Are you ready?");
-
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     let tie = 0;
-
-//     for (i = 0; i < 5; i++) {
-//         let playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
-
-//         if (playerSelection !== null) {
-//             while (playerSelection === "") {
-//                 alert("You didn't make a move!");
-//                 playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
-//             }
-    
-//             let playerWinOrLose = playRound(playerSelection, computerPlay());
-    
-//             if (playerWinOrLose === "Win") {
-//                 playerScore++;
-//             } else if (playerWinOrLose === "Lose") {
-//                 computerScore++;
-//             } else if (playerWinOrLose === "Tie") {
-//                 tie++;
-//             } else {
-//                 break;
-//             }
-//         } else {
-//             break;
-//         }
-//     }
-
-//     if (playerScore === 0 && computerScore === 0 && tie === 0) {
-//         console.log("Sorry, looks like nothing happened this game!");
-//     } else {
-//         console.log(`End of game! Your final scores are: ${playerScore} wins, ${computerScore} losses, and ${tie} ties`);
-//     }
-// }
-
-// // Call game() to play in browser console
-// game();
-
 /**
  * 
  * Function declarations start here
@@ -194,6 +146,30 @@ function addComputerMove() {
 }
 
 /**
+ * Increases the scoreboard based on the results from a single round.
+ * @param {object} el - Element object of CSS selector.
+ * @param {string} roundResult  - The result of a single round.
+ */
+function increaseScore(el, roundResult) {
+    let score = 0;
+    if(roundResult === "win") {
+        score += parseInt(win.textContent);
+        score++;
+        win.textContent = score;
+    }
+    if (roundResult === "tie") {
+        score += parseInt(tie.textContent);
+        score++;
+        tie.textContent = score;
+    }
+    if (roundResult === "lose") {
+        score += parseInt(lose.textContent);
+        score++;
+        lose.textContent = score;
+    }
+}
+
+/**
  * 
  * Element object declarations and event listeners start here
  * 
@@ -209,6 +185,10 @@ const scissorsBtn = document.querySelector(".scissors");
 const playerMoveContainer = document.querySelector(".player-move");
 const computerMoveContainer = document.querySelector(".computer-move");
 const imgPlaceholder = document.querySelectorAll(".img-placeholder");
+const score = document.querySelector(".score");
+const win = document.querySelector(".win");
+const tie = document.querySelector(".tie");
+const lose = document.querySelector(".lose");
 
 window.addEventListener("pageshow", function(e) {
     gameContainer.style.display = "none";
@@ -234,8 +214,9 @@ rockBtn.addEventListener("click", function(e) {
     }
     const playerMove = addPlayerMove(rockBtn);
     const computerMove = addComputerMove();
-    playRound(playerMove, computerMove);
+    const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
+    increaseScore(score, roundResult);
 });
 
 paperBtn.addEventListener("click", function(e) {
@@ -244,8 +225,9 @@ paperBtn.addEventListener("click", function(e) {
     }
     const playerMove = addPlayerMove(paperBtn);
     const computerMove = addComputerMove();
-    playRound(playerMove, computerMove);
+    const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
+    increaseScore(score, roundResult);
 });
 
 scissorsBtn.addEventListener("click", function(e) {
@@ -254,6 +236,54 @@ scissorsBtn.addEventListener("click", function(e) {
     }
     const playerMove = addPlayerMove(scissorsBtn);
     const computerMove = addComputerMove();
-    playRound(playerMove, computerMove);
+    const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
+    increaseScore(score, roundResult);
 });
+
+// score.addEventListener("transitionend", function(e) {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     let tie = 0;
+//     // if ()
+// })
+
+// /**
+//  * Initiates game with the player.
+//  */
+//  function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     let tie = 0;
+
+//     for (i = 0; i < 5; i++) {
+//         let playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
+
+//         if (playerSelection !== null) {
+//             while (playerSelection === "") {
+//                 alert("You didn't make a move!");
+//                 playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
+//             }
+    
+//             let playerWinOrLose = playRound(playerSelection, computerPlay());
+    
+//             if (playerWinOrLose === "win") {
+//                 playerScore++;
+//             } else if (playerWinOrLose === "lose") {
+//                 computerScore++;
+//             } else if (playerWinOrLose === "tie") {
+//                 tie++;
+//             } else {
+//                 break;
+//             }
+//         } else {
+//             break;
+//         }
+//     }
+
+//     if (playerScore === 0 && computerScore === 0 && tie === 0) {
+//         console.log("Sorry, looks like nothing happened this game!");
+//     } else {
+//         console.log(`End of game! Your final scores are: ${playerScore} wins, ${computerScore} losses, and ${tie} ties`);
+//     }
+// }

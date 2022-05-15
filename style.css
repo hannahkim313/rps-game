@@ -94,6 +94,8 @@ button {
 
 .score {
     margin-top: 60px;
+    display: flex;
+    gap: 10px;
 }
 
 .player,
