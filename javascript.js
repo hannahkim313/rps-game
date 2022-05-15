@@ -169,6 +169,41 @@ function increaseScore(roundResult) {
 }
 
 /**
+ * Returns a string with the first letter capitalized and the rest
+ * of the letters in lowercase.
+ * @param {string} word - The word to capitalize.
+ * @returns {string} word with only the first letter capitalized.
+ */
+ function capitalize(word) {
+    word = word.toLowerCase();
+    const firstLetter = word.charAt(0).toUpperCase();
+    return word = `${firstLetter}${word.slice(1, word.length)}`;
+} 
+
+/**
+ * Prints the results of a single round.
+ * @param {string} roundResult - The result from a single round. 
+ * @param {string} playerMove - The player's move.
+ * @param {string} computerMove - The computer's move.
+ */
+function printRoundMessage(roundResult, playerMove, computerMove) {
+    playerMove = capitalize(playerMove);
+    computerMove = capitalize(computerMove);
+    if (roundResult === "win") {
+        mainRoundMessage.textContent = "You win!";
+        subRoundMessage.textContent = `${playerMove} beats ${computerMove}.`;
+    }
+    if (roundResult === "tie") {
+        mainRoundMessage.textContent = "It's a tie!";
+        subRoundMessage.textContent = `You both picked ${playerMove}.`;
+    }
+    if (roundResult === "lose") {
+        mainRoundMessage.textContent = "You lose!";
+        subRoundMessage.textContent = `${computerMove} beats ${playerMove}.`;
+    }
+}
+
+/**
  * 
  * Element object declarations and event listeners start here
  * 
@@ -187,6 +222,8 @@ const imgPlaceholder = document.querySelectorAll(".img-placeholder");
 const win = document.querySelector(".win");
 const tie = document.querySelector(".tie");
 const lose = document.querySelector(".lose");
+const mainRoundMessage = document.querySelector(".main-text");
+const subRoundMessage = document.querySelector(".sub-text");
 
 window.addEventListener("pageshow", function(e) {
     gameContainer.style.display = "none";
@@ -215,6 +252,7 @@ rockBtn.addEventListener("click", function(e) {
     const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
     increaseScore(roundResult);
+    printRoundMessage(roundResult, playerMove, computerMove);
 });
 
 paperBtn.addEventListener("click", function(e) {
@@ -226,6 +264,7 @@ paperBtn.addEventListener("click", function(e) {
     const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
     increaseScore(roundResult);
+    printRoundMessage(roundResult, playerMove, computerMove);
 });
 
 scissorsBtn.addEventListener("click", function(e) {
@@ -237,6 +276,7 @@ scissorsBtn.addEventListener("click", function(e) {
     const roundResult = playRound(playerMove, computerMove);
     hideElement(imgPlaceholder);
     increaseScore(roundResult);
+    printRoundMessage(roundResult, playerMove, computerMove);
 });
 
 // score.addEventListener("transitionend", function(e) {
