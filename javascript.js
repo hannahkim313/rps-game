@@ -141,21 +141,21 @@ function addComputerMove() {
     if (computerMove === "rock") {
         const rock = document.createElement("img");
         rock.classList.add("computer-rock");
-        rock.src = "/images/rock.jpg";
+        rock.src = "images/rock.jpg";
         document.querySelector(".computer-move").appendChild(rock);
         return "rock";
     }
     if (computerMove === "paper") {
         const paper = document.createElement("img");
         paper.classList.add("computer-paper");
-        paper.src = "/images/paper.jpg";
+        paper.src = "images/paper.jpg";
         document.querySelector(".computer-move").appendChild(paper);
         return "paper";
     }
     if (computerMove === "scissors") {
         const scissors = document.createElement("img");
         scissors.classList.add("computer-scissors");
-        scissors.src = "/images/scissors.jpg";
+        scissors.src = "images/scissors.jpg";
         document.querySelector(".computer-move").appendChild(scissors);
         return "scissors";
     }
