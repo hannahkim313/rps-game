@@ -104,21 +104,21 @@ function addPlayerMove(btn) {
     if (btn === rockBtn) {
         const rock = document.createElement("img");
         rock.classList.add("player-rock");
-        rock.src = "/images/rock.jpg";
+        rock.src = "images/rock.jpg";
         document.querySelector(".player-move").appendChild(rock);
         return "rock";
     }
     if (btn === paperBtn) {
         const paper = document.createElement("img");
         paper.classList.add("player-paper");
-        paper.src = "/images/paper.jpg";
+        paper.src = "images/paper.jpg";
         document.querySelector(".player-move").appendChild(paper);
         return "paper";
     }
     if (btn === scissorsBtn) {
         const scissors = document.createElement("img");
         scissors.classList.add("player-scissors");
-        scissors.src = "/images/scissors.jpg";
+        scissors.src = "images/scissors.jpg";
         document.querySelector(".player-move").appendChild(scissors);
         return "scissors";
     }
