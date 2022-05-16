@@ -25,6 +25,10 @@
  const mainRoundMessage = document.querySelector(".main-text");
  const subRoundMessage = document.querySelector(".sub-text");
 
+ const gameOverContainer = document.querySelector(".game-over-container");
+ const gameOverSubText = document.querySelector(".game-over-sub-text");
+ const playAgainBtn = document.querySelector(".play-again");
+
 /**
  * 
  * Function declarations start here
@@ -230,6 +234,22 @@ function printRoundMessage(roundResult, playerMove, computerMove) {
 }
 
 /**
+ * Displays the game over pop-up box containing the final score and a
+ * "play again" button.
+ */
+function displayGameOver() {
+    gameOverContainer.style.display = "flex";
+    const finalScore = document.createElement("div");
+    finalScore.textContent = `${win.textContent} - ${tie.textContent} - ${lose.textContent}`;
+    finalScore.style.fontSize = "20px";
+    gameOverContainer.appendChild(finalScore);
+    gameOverContainer.insertBefore(finalScore, playAgainBtn);
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+}
+
+/**
  * 
  * Event listeners start here
  * 
@@ -237,21 +257,13 @@ function printRoundMessage(roundResult, playerMove, computerMove) {
 
 window.addEventListener("pageshow", function(e) {
     gameContainer.style.display = "none";
+    gameOverContainer.style.display = "none";
 });
 
 startButton.addEventListener("click", function(e) {
     fadeElement(homeContainer);
     displayElement(gameContainer, "flex");
 });
-
-// When player clicks on rock, paper, or scissors button, add image to player move.
-// After player selects move, add computer's image to computer move.
-// When both moves have been made, display either a winning or losing message and update score.
-// When either the player or computer reaches 5 points, display a pop-up message
-// with a winning or losing statement, the final score, and a "play again" button.
-// If the "play again" button is clicked, reload page.
-// If the player clicks outside of the final pop-up message, close the message and
-// continue to display pop-up message if player clicks rps icons.
 
 rockBtn.addEventListener("click", function(e) {
     if (hasPlayerImage(playerMoveContainer) === true) {
@@ -263,6 +275,9 @@ rockBtn.addEventListener("click", function(e) {
     hideElement(imgPlaceholder);
     increaseScore(roundResult);
     printRoundMessage(roundResult, playerMove, computerMove);
+    if (win.textContent == 5 || lose.textContent == 5) {
+        displayGameOver();
+    }
 });
 
 paperBtn.addEventListener("click", function(e) {
@@ -272,9 +287,12 @@ paperBtn.addEventListener("click", function(e) {
     const playerMove = addPlayerMove(paperBtn);
     const computerMove = addComputerMove();
     const roundResult = playRound(playerMove, computerMove);
-    hideElement(imgPlaceholder);
     increaseScore(roundResult);
     printRoundMessage(roundResult, playerMove, computerMove);
+    hideElement(imgPlaceholder);
+    if (win.textContent == 5 || lose.textContent == 5) {
+        displayGameOver();
+    }
 });
 
 scissorsBtn.addEventListener("click", function(e) {
@@ -287,51 +305,12 @@ scissorsBtn.addEventListener("click", function(e) {
     hideElement(imgPlaceholder);
     increaseScore(roundResult);
     printRoundMessage(roundResult, playerMove, computerMove);
+    if (win.textContent == 5 || lose.textContent == 5) {
+        displayGameOver();
+    }
 });
 
-// score.addEventListener("transitionend", function(e) {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     let tie = 0;
-//     // if ()
-// })
-
-// /**
-//  * Initiates game with the player.
-//  */
-//  function game() {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     let tie = 0;
-
-//     for (i = 0; i < 5; i++) {
-//         let playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
-
-//         if (playerSelection !== null) {
-//             while (playerSelection === "") {
-//                 alert("You didn't make a move!");
-//                 playerSelection = prompt("Choose your play: Rock, paper, or scissors?");
-//             }
-    
-//             let playerWinOrLose = playRound(playerSelection, computerPlay());
-    
-//             if (playerWinOrLose === "win") {
-//                 playerScore++;
-//             } else if (playerWinOrLose === "lose") {
-//                 computerScore++;
-//             } else if (playerWinOrLose === "tie") {
-//                 tie++;
-//             } else {
-//                 break;
-//             }
-//         } else {
-//             break;
-//         }
-//     }
-
-//     if (playerScore === 0 && computerScore === 0 && tie === 0) {
-//         console.log("Sorry, looks like nothing happened this game!");
-//     } else {
-//         console.log(`End of game! Your final scores are: ${playerScore} wins, ${computerScore} losses, and ${tie} ties`);
-//     }
-// }
+playAgainBtn.addEventListener("click", function(e) {
+    gameOverContainer.style.display = "none";
+    location.reload();
+});
