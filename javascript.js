@@ -105,6 +105,7 @@ function addPlayerMove(btn) {
         const rock = document.createElement("img");
         rock.classList.add("player-rock");
         rock.src = "images/rock.jpg";
+        rock.alt = "A vector artwork of a rock";
         document.querySelector(".player-move").appendChild(rock);
         return "rock";
     }
@@ -112,6 +113,7 @@ function addPlayerMove(btn) {
         const paper = document.createElement("img");
         paper.classList.add("player-paper");
         paper.src = "images/paper.jpg";
+        paper.alt = "A vector artwork of paper";
         document.querySelector(".player-move").appendChild(paper);
         return "paper";
     }
@@ -119,6 +121,7 @@ function addPlayerMove(btn) {
         const scissors = document.createElement("img");
         scissors.classList.add("player-scissors");
         scissors.src = "images/scissors.jpg";
+        scissors.alt = "A vector artwork of scissors";
         document.querySelector(".player-move").appendChild(scissors);
         return "scissors";
     }
@@ -142,6 +145,7 @@ function addComputerMove() {
         const rock = document.createElement("img");
         rock.classList.add("computer-rock");
         rock.src = "images/rock.jpg";
+        rock.alt = "A vector artwork of a rock";
         document.querySelector(".computer-move").appendChild(rock);
         return "rock";
     }
@@ -149,6 +153,7 @@ function addComputerMove() {
         const paper = document.createElement("img");
         paper.classList.add("computer-paper");
         paper.src = "images/paper.jpg";
+        paper.alt = "A vector artwork of paper";
         document.querySelector(".computer-move").appendChild(paper);
         return "paper";
     }
@@ -156,6 +161,7 @@ function addComputerMove() {
         const scissors = document.createElement("img");
         scissors.classList.add("computer-scissors");
         scissors.src = "images/scissors.jpg";
+        scissors.alt = "A vector artwork of scissors";
         document.querySelector(".computer-move").appendChild(scissors);
         return "scissors";
     }
