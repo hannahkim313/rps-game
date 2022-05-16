@@ -1,6 +1,6 @@
 /**
  * 
- * Element object declarations start here
+ * Element object declarations start here.
  * 
  */
 
@@ -31,7 +31,7 @@
 
 /**
  * 
- * Function declarations start here
+ * Function declarations start here.
  * 
  */
 
@@ -251,7 +251,7 @@ function displayGameOver() {
 
 /**
  * 
- * Event listeners start here
+ * Event listeners start here.
  * 
  */
 
@@ -311,6 +311,5 @@ scissorsBtn.addEventListener("click", function(e) {
 });
 
 playAgainBtn.addEventListener("click", function(e) {
-    gameOverContainer.style.display = "none";
     location.reload();
 });
