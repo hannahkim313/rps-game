@@ -245,6 +245,11 @@ function printRoundMessage(roundResult, playerMove, computerMove) {
  */
 function displayGameOver() {
     gameOverContainer.style.display = "flex";
+    const gameOverText = document.createElement("div");
+    gameOverText.textContent = (win.textContent > lose.textContent) ? "You win!"
+        : "You lose!";
+    gameOverContainer.appendChild(gameOverText);
+    gameOverContainer.insertBefore(gameOverText, gameOverSubText);
     const finalScore = document.createElement("div");
     finalScore.textContent = `${win.textContent} - ${tie.textContent} - ${lose.textContent}`;
     finalScore.style.fontSize = "20px";
