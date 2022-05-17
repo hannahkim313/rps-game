@@ -34,27 +34,22 @@ button {
 
 /* Selectors for the home page begin here */
 
-.test-container {
-    margin-top: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-}
-
 #home-container {
-    /* min-width: 500px; */
-    /* height: auto; */
     font-size: 30px;
     color: #593D3B;
-    /* margin: 200px auto auto; */
+    margin-top: 250px;
     gap: 25px;
     transition-duration: 1s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex: 1; */
+    flex: 1;
+}
+
+.title,
+.author {
+    text-align: center;
 }
 
 .start-button {
@@ -184,6 +179,6 @@ button {
 
 #footer {
     font-size: 18px;
-    margin: auto;
+    margin: 50px 0 150px;
     flex: 1;
 }
