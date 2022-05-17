@@ -225,8 +225,9 @@ function printRoundMessage(roundResult, playerMove, computerMove) {
  * has won or lost the game, the final score, and a "play again" button.
  */
 function displayGameOver() {
-    // gameOverContainer.style.display = "flex";
-    displayElement(gameOverContainer, "flex");
+    // Set display property to reveal currently hidden element
+    gameOverContainer.style.display = "flex";
+
     const gameOverText = document.createElement("div");
     gameOverText.textContent = (win.textContent > lose.textContent) ? "You win!"
         : "You lose!";
@@ -238,9 +239,28 @@ function displayGameOver() {
     finalScore.style.fontSize = "20px";
     gameOverContainer.appendChild(finalScore);
     gameOverContainer.insertBefore(finalScore, playAgainBtn);
+
     rockBtn.disabled = true;
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
+}
+
+/**
+ * Plays a single round of the game each time the player clicks on one of
+ * the move buttons and ends the game when either the player or
+ * computer reaches 5 points.
+ * @param {object} btn - Element object of CSS selector.
+ */
+function playGame(btn) {
+    const playerMove = addPlayerMove(btn);
+    const computerMove = addComputerMove();
+    const roundResult = playRound(playerMove, computerMove);
+    hideElement(imgPlaceholder);
+    increaseScore(roundResult);
+    printRoundMessage(roundResult, playerMove, computerMove);
+    if (win.textContent == 5 || lose.textContent == 5) {
+        displayGameOver();
+    }
 }
 
 /**
@@ -263,45 +283,21 @@ rockBtn.addEventListener("click", function(e) {
     if (hasImage(playerMoveContainer, "player") === true) {
         hideElement(playerMoveContainer.lastElementChild);
     }
-    const playerMove = addPlayerMove(rockBtn);
-    const computerMove = addComputerMove();
-    const roundResult = playRound(playerMove, computerMove);
-    hideElement(imgPlaceholder);
-    increaseScore(roundResult);
-    printRoundMessage(roundResult, playerMove, computerMove);
-    if (win.textContent == 5 || lose.textContent == 5) {
-        displayGameOver();
-    }
+    playGame(rockBtn);
 });
 
 paperBtn.addEventListener("click", function(e) {
     if (hasImage(playerMoveContainer, "player") === true) {
         hideElement(playerMoveContainer.lastElementChild);
     }
-    const playerMove = addPlayerMove(paperBtn);
-    const computerMove = addComputerMove();
-    const roundResult = playRound(playerMove, computerMove);
-    increaseScore(roundResult);
-    printRoundMessage(roundResult, playerMove, computerMove);
-    hideElement(imgPlaceholder);
-    if (win.textContent == 5 || lose.textContent == 5) {
-        displayGameOver();
-    }
+    playGame(paperBtn);
 });
 
 scissorsBtn.addEventListener("click", function(e) {
     if (hasImage(playerMoveContainer, "player") === true) {
         hideElement(playerMoveContainer.lastElementChild);
     }
-    const playerMove = addPlayerMove(scissorsBtn);
-    const computerMove = addComputerMove();
-    const roundResult = playRound(playerMove, computerMove);
-    hideElement(imgPlaceholder);
-    increaseScore(roundResult);
-    printRoundMessage(roundResult, playerMove, computerMove);
-    if (win.textContent == 5 || lose.textContent == 5) {
-        displayGameOver();
-    }
+    playGame(scissorsBtn);
 });
 
 playAgainBtn.addEventListener("click", function(e) {
