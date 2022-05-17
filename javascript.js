@@ -86,6 +86,20 @@ function hasImage(el, name) {
 }
 
 /**
+ * Creates and appends an image element of either the player's or computer's
+ * move to the respective class selector.
+ * @param {string} name - Name of either player or computer.
+ * @param {string} move - Move that the player or computer made.
+ */
+function addImage(name, move) {
+    const moveImage = document.createElement("img");
+    moveImage.classList.add(`${name}-${move}`);
+    moveImage.src = `images/${move}.jpg`;
+    moveImage.alt = `A vector artwork of a ${move}`;
+    document.querySelector(`.${name}-move`).appendChild(moveImage);
+}
+
+/**
  * Adds an image of either rock, paper, or scissors under the player
  * section based on which button was clicked.
  * @param {object} btn - Element object of CSS selector.
@@ -93,27 +107,15 @@ function hasImage(el, name) {
  */
 function addPlayerMove(btn) {
     if (btn === rockBtn) {
-        const rock = document.createElement("img");
-        rock.classList.add("player-rock");
-        rock.src = "images/rock.jpg";
-        rock.alt = "A vector artwork of a rock";
-        document.querySelector(".player-move").appendChild(rock);
+        addImage("player", "rock");
         return "rock";
     }
     if (btn === paperBtn) {
-        const paper = document.createElement("img");
-        paper.classList.add("player-paper");
-        paper.src = "images/paper.jpg";
-        paper.alt = "A vector artwork of paper";
-        document.querySelector(".player-move").appendChild(paper);
+        addImage("player", "paper");
         return "paper";
     }
     if (btn === scissorsBtn) {
-        const scissors = document.createElement("img");
-        scissors.classList.add("player-scissors");
-        scissors.src = "images/scissors.jpg";
-        scissors.alt = "A vector artwork of scissors";
-        document.querySelector(".player-move").appendChild(scissors);
+        addImage("player", "scissors");
         return "scissors";
     }
 }
@@ -133,27 +135,15 @@ function addComputerMove() {
         hideElement(computerMoveContainer.lastElementChild);
     }
     if (computerMove === "rock") {
-        const rock = document.createElement("img");
-        rock.classList.add("computer-rock");
-        rock.src = "images/rock.jpg";
-        rock.alt = "A vector artwork of a rock";
-        document.querySelector(".computer-move").appendChild(rock);
+        addImage("computer", "rock");
         return "rock";
     }
     if (computerMove === "paper") {
-        const paper = document.createElement("img");
-        paper.classList.add("computer-paper");
-        paper.src = "images/paper.jpg";
-        paper.alt = "A vector artwork of paper";
-        document.querySelector(".computer-move").appendChild(paper);
+        addImage("computer", "paper");
         return "paper";
     }
     if (computerMove === "scissors") {
-        const scissors = document.createElement("img");
-        scissors.classList.add("computer-scissors");
-        scissors.src = "images/scissors.jpg";
-        scissors.alt = "A vector artwork of scissors";
-        document.querySelector(".computer-move").appendChild(scissors);
+        addImage("computer", "scissors");
         return "scissors";
     }
 }
