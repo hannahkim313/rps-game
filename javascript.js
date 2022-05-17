@@ -29,6 +29,8 @@
  const gameOverSubText = document.querySelector(".game-over-sub-text");
  const playAgainBtn = document.querySelector(".play-again");
 
+ const footer = document.querySelector("#footer");
+
 /**
  * 
  * Function declarations start here.
@@ -55,6 +57,7 @@ function fadeElement(el) {
 function displayElement(el, val) {
     window.addEventListener("transitionend", () => {
         el.style.display = val;
+        footer.style.margin = "15px auto auto auto";
     })
 }
 
