@@ -13,6 +13,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 img {
@@ -38,14 +39,14 @@ button {
     height: auto;
     font-size: 30px;
     color: #593D3B;
-    margin: 300px 300px auto;
+    margin: 300px auto auto;
     gap: 25px;
     transition-duration: 1s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex: 1;
 }
 
 .start-button {
@@ -176,4 +177,5 @@ button {
 #footer {
     font-size: 18px;
     margin: auto;
+    flex: 1;
 }
