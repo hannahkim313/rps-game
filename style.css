@@ -9,7 +9,6 @@
 body {
     min-height: 100vh;
     background-color: #FFBEA7;
-    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -178,12 +177,3 @@ button {
     font-size: 18px;
     margin: auto;
 }
-
-/*
-Color palette:
---melon: #ffbea7ff;
---chocolate-web: #d8671dff;
---wintergreen-dream: #689689ff;
---dark-liver-horses: #593d3bff;
---black-coffee: #32292fff;
-*/
