@@ -258,9 +258,7 @@ function playGame(btn) {
     hideElement(imgPlaceholder);
     increaseScore(roundResult);
     printRoundMessage(roundResult, playerMove, computerMove);
-    if (win.textContent == 5 || lose.textContent == 5) {
-        displayGameOver();
-    }
+    if (win.textContent == 5 || lose.textContent == 5) displayGameOver();
 }
 
 /**
