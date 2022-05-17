@@ -73,25 +73,16 @@ function hideElement(el) {
 }
 
 /**
- * Determines whether or not an image of the player's move is present.
+ * Determines whether or not an image of the player's or computer's
+ * move is present.
  * @param {object} el - Element object of CSS selector.
+ * @param {string} name - Name of either player or computer.
  * @returns {boolean}
  */
- function hasPlayerImage(el) {
-    return (el.lastElementChild.matches(".player-rock") ||
-        el.lastElementChild.matches(".player-paper") ||
-        el.lastElementChild.matches(".player-scissors")) ? true : false;
-}
-
-/**
- * Determines whether or not an image of the computer's move is present.
- * @param {object} el - Element object of CSS selector.
- * @returns {boolean}
- */
- function hasComputerImage(el) {
-    return (el.lastElementChild.matches(".computer-rock") ||
-        el.lastElementChild.matches(".computer-paper") ||
-        el.lastElementChild.matches(".computer-scissors")) ? true : false;
+function hasImage(el, name) {
+    return el.lastElementChild.matches(`.${name}-rock`) ||
+        el.lastElementChild.matches(`.${name}-paper`) ||
+        el.lastElementChild.matches(`.${name}-scissors`) ? true : false;
 }
 
 /**
@@ -138,7 +129,7 @@ function addComputerMove() {
     const computerMove = (randomNum === 1) ? "rock"
         : (randomNum === 2) ? "paper"
         : "scissors";
-    if (hasComputerImage(computerMoveContainer) === true) {
+    if (hasImage(computerMoveContainer, "computer") === true) {
         hideElement(computerMoveContainer.lastElementChild);
     }
     if (computerMove === "rock") {
@@ -251,7 +242,8 @@ function displayGameOver() {
     gameOverContainer.appendChild(gameOverText);
     gameOverContainer.insertBefore(gameOverText, gameOverSubText);
     const finalScore = document.createElement("div");
-    finalScore.textContent = `${win.textContent} - ${tie.textContent} - ${lose.textContent}`;
+    finalScore.textContent = `${win.textContent} - ${tie.textContent} - 
+        ${lose.textContent}`;
     finalScore.style.fontSize = "20px";
     gameOverContainer.appendChild(finalScore);
     gameOverContainer.insertBefore(finalScore, playAgainBtn);
@@ -277,7 +269,7 @@ startButton.addEventListener("click", function(e) {
 });
 
 rockBtn.addEventListener("click", function(e) {
-    if (hasPlayerImage(playerMoveContainer) === true) {
+    if (hasImage(playerMoveContainer, "player") === true) {
         hideElement(playerMoveContainer.lastElementChild);
     }
     const playerMove = addPlayerMove(rockBtn);
@@ -292,7 +284,7 @@ rockBtn.addEventListener("click", function(e) {
 });
 
 paperBtn.addEventListener("click", function(e) {
-    if (hasPlayerImage(playerMoveContainer) === true) {
+    if (hasImage(playerMoveContainer, "player") === true) {
         hideElement(playerMoveContainer.lastElementChild);
     }
     const playerMove = addPlayerMove(paperBtn);
@@ -307,7 +299,7 @@ paperBtn.addEventListener("click", function(e) {
 });
 
 scissorsBtn.addEventListener("click", function(e) {
-    if (hasPlayerImage(playerMoveContainer) === true) {
+    if (hasImage(playerMoveContainer, "player") === true) {
         hideElement(playerMoveContainer.lastElementChild);
     }
     const playerMove = addPlayerMove(scissorsBtn);
