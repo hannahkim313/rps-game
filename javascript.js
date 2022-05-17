@@ -221,11 +221,12 @@ function printRoundMessage(roundResult, playerMove, computerMove) {
 }
 
 /**
- * Displays the game over pop-up box containing the final score and a
- * "play again" button.
+ * Displays a game over pop-up box containing a message of whether the player
+ * has won or lost the game, the final score, and a "play again" button.
  */
 function displayGameOver() {
-    gameOverContainer.style.display = "flex";
+    // gameOverContainer.style.display = "flex";
+    displayElement(gameOverContainer, "flex");
     const gameOverText = document.createElement("div");
     gameOverText.textContent = (win.textContent > lose.textContent) ? "You win!"
         : "You lose!";
