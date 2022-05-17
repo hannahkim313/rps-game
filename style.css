@@ -34,19 +34,27 @@ button {
 
 /* Selectors for the home page begin here */
 
+.test-container {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
 #home-container {
-    min-width: 500px;
-    height: auto;
+    /* min-width: 500px; */
+    /* height: auto; */
     font-size: 30px;
     color: #593D3B;
-    margin: 300px auto auto;
+    /* margin: 200px auto auto; */
     gap: 25px;
     transition-duration: 1s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    /* flex: 1; */
 }
 
 .start-button {
